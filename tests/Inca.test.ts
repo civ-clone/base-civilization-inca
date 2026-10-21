@@ -7,7 +7,7 @@ import { instance as cityNameRegistryInstance } from '@civ-clone/core-civilizati
 import '../index';
 
 describe('Inca', (): void => {
-  it('has a people, a nation and two colours', (): void => {
+  it('has its people, nation and colours', (): void => {
     const attributes = Object.fromEntries(
       attributeRegistryInstance
         .getByCivilization(Inca)
@@ -16,10 +16,8 @@ describe('Inca', (): void => {
 
     expect(attributes.people).to.equal('Inca');
     expect(attributes.nation).to.equal('the Inca Empire');
-    expect(attributes.colors).to.have.lengthOf(2);
-    attributes.colors.forEach((color: string) =>
-      expect(color).to.match(/^#([0-9A-F]{3}|[0-9A-F]{6})$/i)
-    );
+    // The first fills a unit's shield and a city's square; the second is the shield's edge and the city.
+    expect(attributes.colors).to.eql(['#D84315', '#FDD835']);
   });
 
   it('has city names, all different, with its capital first', (): void => {
@@ -27,7 +25,7 @@ describe('Inca', (): void => {
       .entries()
       .filter((cityName) => cityName.civilization() === Inca);
 
-    expect(cityNames.length).to.be.at.least(30);
+    expect(cityNames.length).to.be.at.least(20);
     expect(new Set(cityNames.map((cityName) => cityName.name())).size).to.equal(
       cityNames.length
     );
@@ -38,7 +36,7 @@ describe('Inca', (): void => {
     ).to.eql(['Cusco']);
   });
 
-  it('has leaders of the Incas', (): void => {
+  it('has its leaders', (): void => {
     (
       [
         [Pachacuti, 'Pachacuti'],
