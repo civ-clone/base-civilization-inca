@@ -17,7 +17,7 @@ describe('Inca', (): void => {
     expect(attributes.people).to.equal('Inca');
     expect(attributes.nation).to.equal('the Inca Empire');
     // The first fills a unit's shield and a city's square; the second is the shield's edge and the city.
-    expect(attributes.colors).to.eql(['#D84315', '#FDD835']);
+    expect(attributes.colors).to.eql(['#D14714', '#FFFFFF']);
   });
 
   it('has city names, all different, with its capital first', (): void => {
